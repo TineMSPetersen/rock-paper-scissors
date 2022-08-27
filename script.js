@@ -1,6 +1,6 @@
 function getComputerChoice() {
     // The const is an array defining the options
-    const choice = ["Rock", "Paper", "Scissors"];
+    const choice = [ "Rock", "Paper", "Scissors"];
 
     // const random picks a random length from the above array
     const random = Math.floor(Math.random() * choice.length);
@@ -16,13 +16,13 @@ function playRound(playerSelection, computerSelection) {
                 console.log("Computer uses Rock!")
                 console.log("A draw!");
                 break;
-            case 'Paper':
-                console.log("Computer uses Paper!")
-                console.log("You lose!")
-                break;
             case 'Scissors':
                 console.log("Computer uses Scissors!")
                 console.log("You win!")
+                break;
+            case 'Paper':
+                console.log("Computer uses Paper!")
+                console.log("You lose!")
                 break;
             default:
                 console.log("Something went wrong");
@@ -49,13 +49,13 @@ function playRound(playerSelection, computerSelection) {
                 console.log("Computer uses Rock!")
                 console.log("You lose!");
                 break;
+                case 'Scissors':
+                console.log("Computer uses Scissors!")
+                console.log("A draw!");
+                break;
             case 'Paper':
                 console.log("Computer uses Paper!")
                 console.log("You win!");
-                break;
-            case 'Scissors':
-                console.log("Computer uses Scissors!")
-                console.log("A draw!");
                 break;
             default:
                 console.log("Something went wrong");
@@ -63,6 +63,16 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-let playerSelection = "scissors";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+/*let playerSelection = "scissors";
+ let computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection)); */
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Rock, Paper or Scissors?")
+        computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+
+
+}
