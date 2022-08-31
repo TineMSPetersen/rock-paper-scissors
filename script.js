@@ -10,23 +10,27 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    let result;
+    
     if (playerSelection.toLowerCase() === "rock") {
         switch (computerSelection) {
             case 'Rock':
-                console.log("Computer uses Rock!")
+                console.log("Computer uses Rock!");
                 console.log("A draw!");
-                return 0;
+                return result = "draw";
+
                 break;
             case 'Scissors':
-                console.log("Computer uses Scissors!")
+                console.log("Computer uses Scissors!");
                 console.log("You win!")
-                return 1;
+                return result = "win";
+
                 break;
             case 'Paper':
-                console.log("Computer uses Paper!")
+                console.log("Computer uses Paper!");
                 console.log("You lose!")
+                return result = "lose";
 
-                return -1;
                 break;
             default:
                 console.log("Something went wrong");
@@ -34,49 +38,51 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === "paper") {
         switch (computerSelection) {
             case 'Rock':
-                console.log("Computer uses Rock!")
-                console.log("You win!")
+                console.log("Computer uses Rock!");
+                console.log("You win!");
+                return result = "win";
 
-                return 1;
                 break;
             case 'Paper':
-                console.log("Computer uses Paper!")
+                console.log("Computer uses Paper!");
                 console.log("A draw!");
+                return result = "draw";
 
-                return 0;
                 break;
             case 'Scissors':
-                console.log("Computer uses Scissors!")
+                console.log("Computer uses Scissors!");
                 console.log("You lose!");
+                return result = "lose";
 
-                return -1;
             default:
                 console.log("Something went wrong");
         }
     } else {
         switch (computerSelection) {
             case 'Rock':
-                console.log("Computer uses Rock!")
+                console.log("Computer uses Rock!");
                 console.log("You lose!");
+                return result = "lose";
 
-                return -1;
                 break;
             case 'Scissors':
-                console.log("Computer uses Scissors!")
+                console.log("Computer uses Scissors!");
                 console.log("A draw!");
+                return result = "draw";
 
-                return 0;
                 break;
             case 'Paper':
-                console.log("Computer uses Paper!")
+                console.log("Computer uses Paper!");
                 console.log("You win!");
+                return result = "win";
 
-                return 1;
                 break;
             default:
                 console.log("Something went wrong");
         }
     }
+
+    return result;
 }
 
 /*let playerSelection = "scissors";
@@ -84,11 +90,32 @@ function playRound(playerSelection, computerSelection) {
 console.log(playRound(playerSelection, computerSelection)); */
 
 function game() {
+    let gameresult = 0;
+    let score = 0;
+
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Rock, Paper or Scissors?")
         computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        // console.log(playRound(playerSelection, computerSelection));
+        gameresult = playRound(playerSelection, computerSelection);
+
+        if (gameresult === "win") {
+            score = score + 1;
+
+        } else if (gameresult === "draw") {
+            score = score;
+
+        } else if (gameresult === "lose") {
+            score = score - 1;
+        }
+
     }
 
-
+    if (score < 0) {
+        console.log("Too bad, you lost! The computer won!");
+    } else if (score === 0) {
+        console.log("It appear you're evenly matched! Try again");
+    } else if (score > 0) {
+        console.log("You won! Congratulations!");
+    }
 }
