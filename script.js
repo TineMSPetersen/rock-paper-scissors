@@ -9,24 +9,40 @@ function getComputerChoice() {
     return choice[random];
 }
 
+let computerSelection = getComputerChoice();
+
+const rockButton = document.querySelector("#rock");
+rockButton.addEventListener('click', () => playRound("rock", computerSelection));
+
+const paperButton = document.querySelector("#paper");
+paperButton.addEventListener('click', () => playRound("paper", computerSelection));
+
+const scissorsButton = document.querySelector("#scissors");
+scissorsButton.addEventListener('click', () => playRound("scissors", computerSelection));
+
+const div = document.querySelector("div");
+
 function playRound(playerSelection, computerSelection) {
     let result;
     
     if (playerSelection.toLowerCase() === "rock") {
         switch (computerSelection) {
             case 'Rock':
+                div.innerText = "Computer uses Rock... It's a draw!";
                 console.log("Computer uses Rock!");
                 console.log("A draw!");
                 return result = "draw";
 
                 break;
             case 'Scissors':
+                div.innerText = "Computer uses Scissors... You win!";
                 console.log("Computer uses Scissors!");
                 console.log("You win!")
                 return result = "win";
 
                 break;
             case 'Paper':
+                div.innerText = "Computer uses Paper... You lose!";
                 console.log("Computer uses Paper!");
                 console.log("You lose!")
                 return result = "lose";
@@ -38,18 +54,21 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === "paper") {
         switch (computerSelection) {
             case 'Rock':
+                div.innerText = "Computer uses Rock... You win!";
                 console.log("Computer uses Rock!");
                 console.log("You win!");
                 return result = "win";
 
                 break;
             case 'Paper':
+                div.innerText = "Computer uses Paper... It's a draw!";
                 console.log("Computer uses Paper!");
                 console.log("A draw!");
                 return result = "draw";
 
                 break;
             case 'Scissors':
+                div.innerText = "Computer uses Scissors... You lose!";
                 console.log("Computer uses Scissors!");
                 console.log("You lose!");
                 return result = "lose";
@@ -60,18 +79,21 @@ function playRound(playerSelection, computerSelection) {
     } else {
         switch (computerSelection) {
             case 'Rock':
+                div.innerText = "Computer uses Rock... You lose!";
                 console.log("Computer uses Rock!");
                 console.log("You lose!");
                 return result = "lose";
 
                 break;
             case 'Scissors':
+                div.innerText = "Computer uses Scissors... It's a draw!";
                 console.log("Computer uses Scissors!");
                 console.log("A draw!");
                 return result = "draw";
 
                 break;
             case 'Paper':
+                div.innerText = "Computer uses Paper... You win!";
                 console.log("Computer uses Paper!");
                 console.log("You win!");
                 return result = "win";
@@ -85,11 +107,14 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
+
+
+
 /*let playerSelection = "scissors";
  let computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection)); */
 
-function game() {
+/* function game() {
     let gameresult = 0;
     let score = 0;
 
@@ -119,3 +144,4 @@ function game() {
         console.log("You won! Congratulations!");
     }
 }
+*/
